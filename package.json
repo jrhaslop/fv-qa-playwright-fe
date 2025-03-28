@@ -1,0 +1,23 @@
+{
+  "name": "fv-qa-playwright-fe",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "index.js",
+  "scripts": {
+    "test:dev": "cross-env ENV=dev npx playwright test",
+    "test:test": "cross-env ENV=test npx playwright test",
+    "test:prod": "cross-env ENV=prod npx playwright test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.14",
+    "cross-env": "^7.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
+
+
