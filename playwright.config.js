@@ -14,5 +14,6 @@ module.exports = defineConfig({
     screenshot: 'on',
     video: 'retain-on-failure'
   },
+  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }]],
 });
 
