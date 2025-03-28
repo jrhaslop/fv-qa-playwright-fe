@@ -1,5 +1,8 @@
 const base = require('@playwright/test').test;
-const { HomePage } = require('../pages/HomaPage').default;
+const { HomePage } = require('../pages/HomePage').default;
+const { CartPage } = require('../pages/CartPage').default;
+const { SearchPage } = require('../pages/SearchPage').default;
+const { ProductPage } = require('../pages/ProductPage').default;
 
 const dotenv = require('dotenv');
 const fs = require('fs');
@@ -38,7 +41,16 @@ const test = base.extend({
 
   homePage: async ({ page }, use) => {
     await use(new HomePage(page));
-  }
+  },
+  cartPage: async ({ page }, use) => {
+    await use(new CartPage(page));
+  },
+  searchPage: async ({ page }, use) => {
+    await use(new SearchPage(page));
+  },
+  productPage: async ({ page }, use) => {
+    await use(new ProductPage(page));
+  },
 });
 
 module.exports = { test, expect: base.expect };
