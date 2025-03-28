@@ -20,15 +20,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      - name: Install Chromium only
+        run: npx playwright install chromium --with-deps
 
       - name: Run Playwright tests
         run: npx playwright test
 
       - name: Generate Playwright HTML Report
         if: always()
-        run: npx playwright show-report || true
+        run: npx playwright generate-report
 
       - name: Upload Playwright report
         if: always()
