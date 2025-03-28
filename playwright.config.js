@@ -10,7 +10,7 @@ if (fs.existsSync(envFile)) dotenv.config({ path: envFile });
 module.exports = defineConfig({
   use: {
     baseURL: process.env.BASE_URL || 'https://www.fravega.com/',
-    headless: false,
+    headless: true,
     screenshot: 'on',
     video: 'retain-on-failure'
   },
