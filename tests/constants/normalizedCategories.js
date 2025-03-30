@@ -9,9 +9,9 @@ const normalizedCategories = {
     "Heladeras Freezers": "Heladeras Freezers Y Cavas",
     "Climatización": "Climatizacion",
     "Electro Belleza": "Cuidado Personal",
-    "Termotanques": "Termotanques Y Calefones"
+    "Termotanques": "Termotanques Y Calefones",
+    "Herramientas Eléctricas": "Herramientas Electricas"
   };
   
   export default normalizedCategories;
 
-  
