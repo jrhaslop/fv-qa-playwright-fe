@@ -3,6 +3,7 @@ const { HomePage } = require('../pages/HomePage').default;
 const { CartPage } = require('../pages/CartPage').default;
 const { SearchPage } = require('../pages/SearchPage').default;
 const { ProductPage } = require('../pages/ProductPage').default;
+const { CategoriePage } = require('../pages/CategoriePage').default;
 
 const dotenv = require('dotenv');
 const fs = require('fs');
@@ -51,6 +52,9 @@ const test = base.extend({
   productPage: async ({ page }, use) => {
     await use(new ProductPage(page));
   },
+  categoriePage: async ({ page }, use) => {
+    await use(new CategoriePage(page));
+  }
 });
 
 module.exports = { test, expect: base.expect };

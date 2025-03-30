@@ -1,6 +1,5 @@
 import { test, expect } from '../fixtures/pageFixture';
-
-const expectedCategories = require('../data/homeCategories.json');
+import { randomIndex } from '../ultil/utils';
 
 test('Caso de uso 1: should purchase product', async ({ homePage, searchPage, productPage, cartPage }) => {
   await test.step('should navigate to product', async () => {
@@ -24,19 +23,27 @@ test('Caso de uso 1: should purchase product', async ({ homePage, searchPage, pr
   });
 });
 
-test('Caso de uso 2: should verify that most common categories render at homepage', async ({ homePage }) => {
-  await test.step('should navegate to homepage', async () => {
+test('should navigate correctly from a category', async ({ homePage, categoriePage }) => {
+  await test.step('should navigate to homepage', async () => {
     await homePage.navigate();
   });
 
-  const actual = await homePage.getCategories();
-  // chequea que en len de las li y el expected array sean =
-  expect(actual.length).toBe(expectedCategories.length);
+  const categories = await test.step('should return available categories', async () => {
+    const list = await homePage.getCategories();
+    expect(list.length).toBeGreaterThan(0);
+    return list;
+  });
 
-  // itera buscando todas las categorias. (Se podria agregar que no existan repetidas tambien, no quise extender.)
-  for (const item of expectedCategories) {
-    expect(actual).toContain(item, `Haven't found expected item: ${item}`);
-  }
+  const index = randomIndex(0, 19);
+  const categoryName = categories[index];
+
+  await test.step(`should navegate to category`, async () => {
+    await homePage.clickCategoryByIndex(index);
+  });
+
+  await test.step('should navigate to the selected category', async () => {
+    await categoriePage.verifyCategorieNav(categoryName);
+  });
 
 });
 

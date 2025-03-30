@@ -6,7 +6,6 @@ class SearchPage {
   }
 
   async clickResult(index = 0) {
-    const count = await this.resultItems.count();
     await this.resultItems.nth(index).click();
   }
 
